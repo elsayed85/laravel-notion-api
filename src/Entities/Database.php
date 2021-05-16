@@ -56,8 +56,7 @@ class Database extends Entity
 
     public function getProperties()
     {
-        //TODO: return collection of property-entities (id, type, title)
-        throw new \Exception("not implemented yet");
+        return $this->properties;
     }
 
     public function getRawTitle(): array

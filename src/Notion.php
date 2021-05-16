@@ -28,19 +28,9 @@ class Notion
      */
     public function __construct(string $version = null, string $token = null)
     {
-        if ($token !== null) {
-            $this->setToken($token);
-        } else {
-            $this->setToken(config('laravel-notion-api.notion-api-token'));
-        }
-
+        $this->setToken($token ?? config('laravel-notion-api.notion-api-token'));
         $this->endpoint = new Endpoint($this);
-
-        if ($version !== null) {
-            $this->setVersion($version);
-        } else {
-            $this->v1();
-        }
+        !is_null($version) ? $this->setVersion($version) : $this->v1();
     }
 
     /**
